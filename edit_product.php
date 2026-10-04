@@ -1,20 +1,19 @@
 <?php
-require "db.php";
+require 'db.php';
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM products WHERE id=?";
+$sql = 'SELECT * FROM products WHERE id=?';
 
-$stmt = $conn -> prepare($sql);
+$stmt = $conn->prepare($sql);
 
-$stmt -> bind_param('i',$id);
+$stmt->bind_param('i', $id);
 
-$stmt -> execute();
+$stmt->execute();
 
 $result = $stmt->get_result();
 
-$product = $result -> fetch_assoc();
-
+$product = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +63,40 @@ $product = $result -> fetch_assoc();
 
         <br><br>
 
-        
+        <label for="category">
+            Category:
+        </label>
+    <select name="category" id="category">
+
+    <option value="Mobile"  <?= $product['category'] === 'Mobile' ? 'selected' : '' ?>>
+                Mobile
+    </option>
+
+    <option value="laptop" <?= $product['category'] === 'Laptop' ? 'selected' : '' ?> >
+        Laptop
+    </option>
+    <option value="Accessories"
+                <?= $product['category'] === 'Accessories' ? 'selected' : '' ?>>
+                Accessories
+            </option>
+
+        </select>
+          <br><br>
+
+
+        <button type="submit">
+            Update Product
+        </button>
 
     </form>
+
+     <br>
+
+    <a href="index.php">
+        Back to Products
+    </a>
+
+
+</body>
+
+</html>

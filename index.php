@@ -1,8 +1,7 @@
 <?php
 require 'db.php';
-$sql = "SELECT * FROM products ORDER BY id DESC";
+$sql = 'SELECT * FROM products ORDER BY id DESC';
 $result = $conn->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ $result = $conn->query($sql);
     <br><br>
 
 
-        <label for="price"></label>
+        <label for="price">Price: </label>
         <input type="number" id="price" name="price" step="0.01" required>
         <br><br>
 
@@ -65,9 +64,7 @@ $result = $conn->query($sql);
         </button>
 
     </form>
-     <button type="submit">
-            Add Product
-        </button>
+     
 <hr>
 
 
@@ -94,7 +91,7 @@ $result = $conn->query($sql);
 
         <tbody>
 
-            <?php while( $product = $result -> fetch_assoc()): ?>
+            <?php while ($product = $result->fetch_assoc()): ?>
 
                 <tr>
 
